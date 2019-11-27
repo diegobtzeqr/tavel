@@ -6,7 +6,9 @@
     <jta-data-source>jdbc/tavel</jta-data-source>
     <!-- JPA managed model class - multiple <class>...</class> occurrences are allowed -->
     <!-- Example: <class>pl.model.Book</class> -->
-    <class>packageTavel.model.Book</class>
+    <class>packageTavel.model.Order</class>
+    <class>packageTavel.model.Item</class>
+    <class>packageTavel.model.OrderItem</class>
     <properties>
       <!-- Request auto-generation of the database schema -->
       <property name="javax.persistence.schema-generation.database.action" value="create"/>
