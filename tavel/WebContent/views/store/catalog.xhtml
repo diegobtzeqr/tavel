@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+
+  <ui:composition template="/WEB-INF/templates/page.xhtml">
+    <ui:define name="main">
+        <!-- JUMBOTRON -->
+        <div class="jumbotron jumbotron-fluid text-center" id="main">
+            <div class="container">
+                <div class="row" style="margin-top:-35px;margin-bottom:-40px;">
+                    <img id="logo" src="#{facesContext.externalContext.requestContextPath}/resources/img/logo.png" href="home.html"></img>
+                </div>
+            </div>
+        </div>
+
+        <!-- Container -->
+        <div id="outer-container">
+            <div class="container-fluid" id="rc">
+                <div class="row">
+                    <img src="#{facesContext.externalContext.requestContextPath}/resources/img/uniform.jpg" id="uniform"></img>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <!-- Items -->
+                        <div class="row">
+                            <div class="col-lg-2 col-md-6 mb-4">
+                                <div class="card h-60">
+                                    <h:link value = "" outcome = "mens-polo"><img class="card-img-top" src="#{facesContext.externalContext.requestContextPath}/resources/img/polo_men.jpg" alt=""></img></h:link>
+                                    <div class="card-body">
+                                        <h4 class="card-title">
+                                            <h:link value = "#{itemCtrl.items[0].title}" outcome = "mens-polo" />
+                                        </h4>
+                                        <h5>$#{itemCtrl.items[0].price}</h5>
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <div class="col-lg-2 col-md-6 mb-4">
+                                <div class="card h-60">
+                                    <h:link value = "" outcome = "womens-polo"><img class="card-img-top" src="#{facesContext.externalContext.requestContextPath}/resources/img/polo_women.jpg" alt=""></img></h:link>>
+                                    <div class="card-body">
+                                        <h4 class="card-title">
+                                            <h:link value = "#{itemCtrl.items[1].title}" outcome = "womens-polo" />
+                                        </h4>
+                                        <h5>$#{itemCtrl.items[1].price}</h5>
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <div class="col-lg-2 col-md-6 mb-4">
+                                <div class="card h-60">
+                                    <h:link value = "" outcome = "backpack"><img class="card-img-top" src="#{facesContext.externalContext.requestContextPath}/resources/img/backpack.jpg" alt=""></img></h:link>>
+                                    <div class="card-body">
+                                        <h4 class="card-title">
+                                            <h:link value = "#{itemCtrl.items[2].title}" outcome = "backpack" />
+                                        </h4>
+                                        <h5>$#{itemCtrl.items[2].price}</h5>
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <div class="col-lg-2 col-md-6 mb-4">
+                                <div class="card h-60">
+                                    <h:link value = "" outcome = "umbrella"><img class="card-img-top" src="#{facesContext.externalContext.requestContextPath}/resources/img/umbrella.jpg" alt=""></img></h:link>>
+                                    <div class="card-body">
+                                        <h4 class="card-title">
+                                            <h:link value = "#{itemCtrl.items[3].title}" outcome = "umbrella" />
+                                        </h4>
+                                        <h5>$#{itemCtrl.items[3].price}</h5>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="col-lg-2 col-md-6 mb-4">
+                                <div class="card h-60">
+                                    <h:link value = "" outcome = "mens-pants"><img class="card-img-top" src="#{facesContext.externalContext.requestContextPath}/resources/img/pants_men.jpg" alt=""></img></h:link>>
+                                    <div class="card-body">
+                                        <h4 class="card-title">
+                                            <h:link value = "#{itemCtrl.items[4].title}" outcome = "mens-pants" />
+                                        </h4>
+                                        <h5>$#{itemCtrl.items[4].price}</h5>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="col-lg-2 col-md-6 mb-4">
+                                <div class="card h-60">
+                                    <h:link value = "" outcome = "womens-pants"><img class="card-img-top" src="#{facesContext.externalContext.requestContextPath}/resources/img/pants_women.jpg" alt=""></img></h:link>>
+                                    <div class="card-body">
+                                        <h4 class="card-title">
+                                            <h:link value = "#{itemCtrl.items[5].title}" outcome = "womens-pants" />
+                                        </h4>
+                                        <h5>$#{itemCtrl.items[5].price}</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+  </ui:composition>
+</html>
