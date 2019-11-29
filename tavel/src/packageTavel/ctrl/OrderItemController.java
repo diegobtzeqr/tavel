@@ -57,14 +57,15 @@ public class OrderItemController {
     orderItem.setSize(foundOrderItem.getSize());
     orderItem.setFirstName(foundOrderItem.getFirstName());
     orderItem.setLastName(foundOrderItem.getLastName());
+    orderItem.setPrice(foundOrderItem.getPrice());
   }
 
   /**
    * Create and persist a new OrderItem instance.
    */
-  public String add(int itemID, int orderId, int q, String size, String firstName, String lastName) {
+  public String add(int itemID, int orderId, int q, String size, String firstName, String lastName, double p) {
     try {
-      OrderItem.add(em, ut, itemID, orderId, q, size, firstName, lastName);
+      OrderItem.add(em, ut, itemID, orderId, q, size, firstName, lastName, p);
       // Clear the form after creating the OrderItem record
       FacesContext facesContext = FacesContext.getCurrentInstance();
       facesContext.getExternalContext().getRequestMap().remove( "orderItem");
@@ -77,9 +78,9 @@ public class OrderItemController {
   /**
    * Update an OrderItem instance.
    */
-  public void update(int id, int itemID, int orderId, int q, String size, String firstName, String lastName) {
+  public void update(int id, int itemID, int orderId, int q, String size, String firstName, String lastName, double p) {
     try {
-      OrderItem.update(em, ut, id, itemID, orderId, q, size, firstName, lastName);
+      OrderItem.update(em, ut, id, itemID, orderId, q, size, firstName, lastName, p);
     } catch ( Exception e) {
       e.printStackTrace();
     }
@@ -95,5 +96,9 @@ public class OrderItemController {
     } catch ( Exception e) {
       e.printStackTrace();
     }
+  }
+
+  public double getTotal(int id) {
+    return OrderItem.getTotal(em, id);
   }
 }

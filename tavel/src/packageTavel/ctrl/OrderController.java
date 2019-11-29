@@ -48,10 +48,10 @@ public class OrderController {
   /**
    * Finishes an order by changing the value of the cartFlag.
    */
-  public void finishOrder(int idOrder) {
+  public void finishOrder(int idOrder, double p) {
     try {
-      Order.update(em, ut, idOrder, "Admin", 1, getOrder(idOrder).getPrice());
-      Order.add(em, ut, "admin", 0, 0.00);
+      Order.update(em, ut, idOrder, "Admin", 1, p);
+      Order.add(em, ut, "Admin", 0, 0.00);
     } catch ( Exception e) {
       e.printStackTrace();
     }

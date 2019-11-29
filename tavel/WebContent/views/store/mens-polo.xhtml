@@ -88,9 +88,7 @@
                                 <div class="col-lg-6"></div>
                             </div>
                             <br></br>
-                            <h:commandButton value="Add to Cart" class="btn btn-lg btn-info" action="#{ orderItemCtrl.add(1, orderCtrl.getCartId(), OrderItem.quantity, OrderItem.size, OrderItem.firstName, OrderItem.lastName)}" oncomplete="callButton2()">
-                                <x:remoteCommand name="callButton2" action="#{orderCtrl.updatePrice(orderCtrl.getCartId(), itemCtrl.items[0].price.doubleValue() * OrderItem.quantity)}" />
-                            </h:commandButton>
+                            <h:commandButton value="Add to Cart" class="btn btn-lg btn-info" action="#{ orderItemCtrl.add(1, orderCtrl.getCartId(), OrderItem.quantity, OrderItem.size, OrderItem.firstName, OrderItem.lastName, itemCtrl.items[0].price)}" />
                             <hr></hr>
                             <p id="description">Prices in Canadian Dollars (CAD).</p>
                             <hr></hr>

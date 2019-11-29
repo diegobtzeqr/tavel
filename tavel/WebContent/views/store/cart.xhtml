@@ -18,37 +18,82 @@
         </div>
 
         <!-- Container -->
-        <h:form prependId="false">
-            <table>
-                <tr>
-                    <th>Delete</th>
-                    <th>Item</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Sub Total</th>
-                </tr>
-                <ui:repeat var="item" value="#{orderItemCtrl.getOrderItemsInCart(orderCtrl.getCartId())}">
-                    <tr>
-                        <td>
-                            <h:form prependId="false">
-                                <h:commandLink value="Delete" action="#{orderItemCtrl.destroy(b.ID)}">
-                                </h:commandLink>
-                            </h:form>
-                        </td>
-                        <td>#{itemCtrl.items[item.itemId - 1].title}</td>
-                        <td>#{itemCtrl.items[item.itemId - 1].price}</td>
-                        <td>#{item.quantity}</td>
-                        <td>#{itemCtrl.items[item.itemId - 1].price * item.quantity}</td>
-                    </tr>
-                </ui:repeat>
-                <tr>
-                    <td>Total</td>
-                    <td>Order Total: $#{orderCtrl.getOrder(orderCtrl.getCartId()).price}</td>
-                </tr>
-            </table>
-            <h:commandLink value="Finish Order" action="#{orderCtrl.finishOrder(orderCtrl.getCartId())}"></h:commandLink>
-        </h:form>
-        <h:button value="Back to Catalog" class="btn btn-lg btn-info" outcome="catalog" />
+        <div id="outer-container">
+                <div class="container-fluid" id="rc">
+                    <br />
+                    <h:button value="Back to Catalog" class="btn btn-lg btn-outline-secondary" outcome="catalog" />
+                    <br /><br />
+                    <div class="row">
+                        <div class="col-6">
+                            <h1 class="display-4">Your Shopping Cart</h1>
+                        </div>
+                        <div class="col-4">
+    
+                        </div>
+                        <div class="col-2">
+                            
+                        </div>
+                    </div>
+                    <br />
+                    <h:form prependId="false">
+                        <table class="table">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col" style="width:40%">Product Name</th>
+                                    <th scope="col">Quantity</th>
+                                    <th scope="col">Price (per unit)</th>
+                                    <th scope="col">Size</th>
+                                    <th scope="col">Subtotal</th>
+                                    <th scope="col" style="width:10%">Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <ui:repeat var="item" value="#{orderItemCtrl.getOrderItemsInCart(orderCtrl.getCartId())}" varStatus="myVarStatus">
+                                    <tr>
+                                        <th scope="row">#{myVarStatus.index}</th>
+                                        <td>#{itemCtrl.items[item.itemId - 1].title}</td>
+                                        <td>#{item.quantity}</td>
+                                        <td>$#{itemCtrl.items[item.itemId - 1].price}</td>
+                                        <td>#{item.size}</td>
+                                        <td>$#{itemCtrl.items[item.itemId - 1].price * item.quantity}</td>
+                                        <td>
+                                            <h:form prependId="false">
+                                                <h:commandLink value="Delete" class="btn btn-outline-danger btn-block" action="#{orderItemCtrl.destroy(b.ID)}">
+                                                </h:commandLink>
+                                            </h:form>
+                                        </td>
+                                    </tr>
+                                </ui:repeat>
+                            </tbody>
+                        </table>
+                        <hr />
+                        <div class="row">
+                            <div class="col-8">
+    
+                            </div>
+                            <div class="col-4">
+                                <span style="float:right;"><h1>Total Price: <span style="color:#ff4d4d;">$#{orderItemCtrl.getTotal(orderCtrl.getCartId())}</span></h1></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">
+                                
+                            </div>
+                            <div class="col-1">
+    
+                            </div>
+                            <div class="col-4">
+                                
+                            </div>
+                            <div class="col-4">
+                                <h:commandButton value="Finish Order" class="btn btn-lg btn-primary btn-block" action="#{orderCtrl.finishOrder(orderCtrl.getCartId(), orderItemCtrl.getTotal(orderCtrl.getCartId()))}"/>
+                            </div>
+                        </div>
+                        <br />
+                    </h:form>
+                </div>
+            </div>
     </ui:define>
   </ui:composition>
 </html>
