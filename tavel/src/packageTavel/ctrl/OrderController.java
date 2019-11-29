@@ -102,14 +102,13 @@ public class OrderController {
   /**
    * Update the price of an order
    */
-  public String updatePrice(int id, double price) {
+  public void updatePrice(int id, double price) {
     try {
       double val = getOrder(id).getPrice() + price;
       Order.update(em, ut, id, "Admin", 0, val);
     } catch ( Exception e) {
       e.printStackTrace();
     }
-    return "update";
   }
 
   /**

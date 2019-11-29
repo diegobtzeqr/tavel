@@ -77,24 +77,23 @@ public class OrderItemController {
   /**
    * Update an OrderItem instance.
    */
-  public String update(int id, int itemID, int orderId, int q, String size, String firstName, String lastName) {
+  public void update(int id, int itemID, int orderId, int q, String size, String firstName, String lastName) {
     try {
       OrderItem.update(em, ut, id, itemID, orderId, q, size, firstName, lastName);
     } catch ( Exception e) {
       e.printStackTrace();
     }
-    return "update";
   }
 
   /**
    * Delete an OrderItem entry from database.
    */
-  public String destroy(int id) {
+  public void destroy(int id) {
     try {
+      System.out.println("Destroying orderItem with id: " + id);
       OrderItem.destroy( em, ut, id);
     } catch ( Exception e) {
       e.printStackTrace();
     }
-    return "delete";
   }
 }
