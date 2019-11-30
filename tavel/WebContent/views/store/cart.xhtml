@@ -35,7 +35,7 @@
                         </div>
                     </div>
                     <br />
-                    <h:form prependId="false">
+                    
                         <table class="table">
                             <thead class="thead-light">
                                 <tr>
@@ -51,7 +51,7 @@
                             <tbody>
                                 <ui:repeat var="item" value="#{orderItemCtrl.getOrderItemsInCart(orderCtrl.getCartId())}" varStatus="myVarStatus">
                                     <tr>
-                                        <th scope="row">#{myVarStatus.index}</th>
+                                        <th scope="row">#{myVarStatus.index + 1}</th>
                                         <td>#{itemCtrl.items[item.itemId - 1].title}</td>
                                         <td>#{item.quantity}</td>
                                         <td>$#{itemCtrl.items[item.itemId - 1].price}</td>
@@ -59,7 +59,7 @@
                                         <td>$#{itemCtrl.items[item.itemId - 1].price * item.quantity}</td>
                                         <td>
                                             <h:form prependId="false">
-                                                <h:commandLink value="Delete" class="btn btn-outline-danger btn-block" action="#{orderItemCtrl.destroy(b.ID)}">
+                                                <h:commandLink value="Delete" class="btn btn-outline-danger btn-block" action="#{orderItemCtrl.destroy(item.ID)}">
                                                 </h:commandLink>
                                             </h:form>
                                         </td>
@@ -83,15 +83,21 @@
                             <div class="col-1">
     
                             </div>
-                            <div class="col-4">
+                            <div class="col-7">
                                 
                             </div>
-                            <div class="col-4">
-                                <h:commandButton value="Finish Order" class="btn btn-lg btn-primary btn-block" action="#{orderCtrl.finishOrder(orderCtrl.getCartId(), orderItemCtrl.getTotal(orderCtrl.getCartId()), orderItemCtrl.countItems(orderCtrl.getCartId()))}"/>
+                            <div class="col-1">
+                                <h:form prependId="false">
+                                    <h:commandButton action="confirmation" value="confirmation">
+                                        <f:actionListener binding="#{orderCtrl.finishOrder(orderCtrl.getCartId(), orderItemCtrl.getTotal(orderCtrl.getCartId()), orderItemCtrl.countItems(orderCtrl.getCartId()))}">
+
+                                        </f:actionListener>
+                                    </h:commandButton>
+                                </h:form>
                             </div>
                         </div>
                         <br />
-                    </h:form>
+                    
                 </div>
             </div>
     </ui:define>
